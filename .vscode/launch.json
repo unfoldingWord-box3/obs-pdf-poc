@@ -9,6 +9,12 @@
       "request": "launch",
       "name": "Browser Preview: Launch",
       "url": "http://localhost:3000"
+    },
+    {
+      "type": "browser-preview",
+      "request": "launch",
+      "name": "Styleguidist: Launch",
+      "url": "http://localhost:6060"
     }
   ]
 }

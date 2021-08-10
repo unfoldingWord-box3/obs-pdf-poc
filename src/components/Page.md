@@ -1,0 +1,5 @@
+Page Example:
+
+```js
+<Page />
+```
