@@ -13,14 +13,18 @@ body {
   margin: 1rem;
 }
 
-.story {
+.story, .toc {
   break-before: page;
 }
 
 .story h1 {
   break-after: page;
 }
-/* 
+ 
 .frame {
  break-inside: avoid;
+}
+
+/* @page {
+  margin: 0.2in 0.5in;
 } */

@@ -38,5 +38,5 @@ The snake responded to the woman, “That is not true! You will not die. God jus
 _A Bible story from: Genesis 3_`,
 ];
 
-<OpenBibleStoriesPDF markdownStories={markdownStories} />
+<OpenBibleStoriesPDF markdownStories={markdownStories} embed={true} />
 ```

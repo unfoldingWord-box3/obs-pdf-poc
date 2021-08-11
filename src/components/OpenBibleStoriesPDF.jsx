@@ -1,23 +1,37 @@
-import {useLayoutEffect} from 'react';
+import {useLayoutEffect, useCallback} from 'react';
 import { Previewer } from 'pagedjs';
 
 import OpenBibleStories from './OpenBibleStories';
 
 export default function OpenBibleStoriesPDF (props) {
+
+  const { embed } = props;
   
-  const previewPDF = ({id}) => {
-    const previewer = new Previewer();
-    previewer.preview(
-      document.querySelector('#'+id).innerHTML, [], document.querySelector('#preview')
-    ).then(flow => {
+  const previewPDF = useCallback(() => {
+      const previewer = new Previewer();
+
+      const callback = (flow) => {
         console.log("preview rendered, total pages", flow.total, { flow });
-        document.querySelector('#'+id).style.display = 'none';
-    });
-  };
+      };
+
+      let options;
+      if (embed) {
+        previewer.preview(
+          document.querySelector('#content').innerHTML,
+          [],
+          document.querySelector('#preview')
+        ).then(flow => {
+          callback(flow);
+          document.querySelector('#content').style.display = 'none';
+        });
+      } else {
+        previewer.preview(options).then(callback);
+      };
+    }, [embed]);
 
   useLayoutEffect(() => {
-    previewPDF({id: 'content'});
-  }, []);
+    previewPDF();
+  }, [previewPDF, embed]);
   
   return (
     <>
