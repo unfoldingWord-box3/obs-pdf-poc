@@ -1,19 +1,30 @@
-import { createRef } from 'react';
-import Pdf from "react-to-pdf";
+import { jsPDF } from "jspdf";
 
 import OpenBibleStories from './OpenBibleStories';
 
 export default function OpenBibleStoriesPDF (props) {
-  const ref = createRef();
+  
+  const exportPDF = ({id}) => {
+    const pdf = new jsPDF();
+    const element = document.getElementById(id);
+    const callback = (_pdf) => { _pdf.save('obs.pdf'); };
+    pdf.html(element, {
+      callback, x: 10, y: 10, 
+      // html2canvas: { useCORS: true, proxy: 'https://astro-cors-server.herokuapp.com/fetch/' },
+    });
+  };
 
   return (
     <>
-      <Pdf targetRef={ref} filename="obs.pdf">
-        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-      </Pdf>
-      <div ref={ref}>
+      <button onClick={() => { exportPDF({id: 'content'}); }}>
+        Export to PDF with method
+      </button>
+      <div id="content" style={{transform: 'scale(0.2)', transformOrigin: 'top left'}}>
         <OpenBibleStories {...props} />
       </div>
     </>
-  );
+  )
+
 };
+
+
