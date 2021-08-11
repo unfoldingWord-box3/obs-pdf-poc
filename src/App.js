@@ -1,5 +1,5 @@
 import './App.css';
-import OpenBibleStories from './components/OpenBibleStories';
+import OpenBibleStoriesPDF from './components/OpenBibleStoriesPDF';
 
 function App() {
 
@@ -45,7 +45,7 @@ function App() {
 
   return (
     <div className="App">
-      <OpenBibleStories bookTitle={bookTitle} markdownStories={markdownStories} />
+      <OpenBibleStoriesPDF bookTitle={bookTitle} markdownStories={markdownStories} />
     </div>
   );
 }
