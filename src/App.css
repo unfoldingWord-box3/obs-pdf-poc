@@ -1,3 +1,26 @@
 .App {
   /* text-align: center; */
 }
+
+body {
+  font-family: sans-serif;
+  background: lightgrey;
+}
+
+.pagedjs_page {
+  background: white;
+  box-shadow: 10px 12px 30px 0 rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+}
+
+.story {
+  break-before: page;
+}
+
+.story h1 {
+  break-after: page;
+}
+/* 
+.frame {
+ break-inside: avoid;
+} */

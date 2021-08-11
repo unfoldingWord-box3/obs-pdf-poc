@@ -8,11 +8,11 @@ export default function TableOfContents ({ entries=[] }) {
   ));
 
   return (
-    <>
+    <div class="toc">
       Table of Contents
       <ul>
         {items}
       </ul>
-    </>
+    </div>
   );
 };

@@ -10,7 +10,7 @@ export default function Story ({markdown}) {
   ));
 
   return (
-    <div>
+    <div class="story">
       {frames}
     </div>
   );

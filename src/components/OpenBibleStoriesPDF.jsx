@@ -1,27 +1,30 @@
-import { jsPDF } from "jspdf";
+import {useLayoutEffect} from 'react';
+import { Previewer } from 'pagedjs';
 
 import OpenBibleStories from './OpenBibleStories';
 
 export default function OpenBibleStoriesPDF (props) {
   
-  const exportPDF = ({id}) => {
-    const pdf = new jsPDF();
-    const element = document.getElementById(id);
-    const callback = (_pdf) => { _pdf.save('obs.pdf'); };
-    pdf.html(element, {
-      callback, x: 10, y: 10, 
-      // html2canvas: { useCORS: true, proxy: 'https://astro-cors-server.herokuapp.com/fetch/' },
+  const previewPDF = ({id}) => {
+    const previewer = new Previewer();
+    previewer.preview(
+      document.querySelector('#'+id).innerHTML, [], document.querySelector('#preview')
+    ).then(flow => {
+        console.log("preview rendered, total pages", flow.total, { flow });
+        document.querySelector('#'+id).style.display = 'none';
     });
   };
 
+  useLayoutEffect(() => {
+    previewPDF({id: 'content'});
+  }, []);
+  
   return (
     <>
-      <button onClick={() => { exportPDF({id: 'content'}); }}>
-        Export to PDF with method
-      </button>
-      <div id="content" style={{transform: 'scale(0.2)', transformOrigin: 'top left'}}>
+      <div id="content">
         <OpenBibleStories {...props} />
       </div>
+      <div id="preview"></div>
     </>
   )
 
