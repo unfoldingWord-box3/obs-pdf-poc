@@ -22,13 +22,17 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "dev": "npx styleguidist server",
+    "dev": "npx styleguidist server --port $npm_config_port",
     "build-dev": "npx styleguidist build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate": "npx babel-node scripts/generate-pdf.js"
+    "generate": "npx babel-node scripts/generate-pdf.js --output_path=${OUTPUT_PATH:-./output.pdf} --port=${PORT:-3000}"
+  },
+  "config": {
+    "output_path": "./obs.pdf",
+    "port": "3000"
   },
   "eslintConfig": {
     "extends": [
