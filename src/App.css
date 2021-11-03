@@ -7,11 +7,17 @@ body {
   background: lightgrey;
 }
 
-.pagedjs_page {
+@page {
+  margin: 0.2in 0.5in;
   background: white;
-  box-shadow: 10px 12px 30px 0 rgba(0, 0, 0, 0.1);
-  margin: 1rem;
-  float: left;
+}
+
+@media screen {
+  .pagedjs_page {
+    box-shadow: 10px 12px 30px 0 rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+    float: left; 
+  }
 }
 
 .story, .toc {
@@ -24,8 +30,4 @@ body {
  
 .frame {
  break-inside: avoid;
-}
-
-@page {
-  margin: 0.2in 0.5in;
 }

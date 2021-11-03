@@ -45,7 +45,9 @@ function App() {
 
   return (
     <div className="App">
-      <OpenBibleStories bookTitle={bookTitle} markdownStories={markdownStories} />
+      <div className="pdf">
+        <OpenBibleStories bookTitle={bookTitle} markdownStories={markdownStories} />
+      </div>
     </div>
   );
 }

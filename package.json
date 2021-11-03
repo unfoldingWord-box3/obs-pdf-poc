@@ -4,6 +4,8 @@
   "description": "Proof of Concept to render OBS stories using React to Screen and PDFs.",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
     "@material-ui/core": "^4.6.1",
     "@material-ui/icons": "^4.5.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -12,6 +14,7 @@
     "markdown-translatable": "^1.3.1",
     "md5": "^2.3.0",
     "pagedjs": "^0.2.0",
+    "puppeteer": "^10.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -19,12 +22,17 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "dev": "npx styleguidist server",
+    "dev": "npx styleguidist server --port $npm_config_port",
     "build-dev": "npx styleguidist build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate": "npx babel-node scripts/generate-pdf.js --output_path=${OUTPUT_PATH:-./output.pdf} --port=${PORT:-3000}"
+  },
+  "config": {
+    "output_path": "./obs.pdf",
+    "port": "3000"
   },
   "eslintConfig": {
     "extends": [
