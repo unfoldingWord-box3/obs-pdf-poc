@@ -10,6 +10,7 @@ body {
 @page {
   margin: 0.2in 0.5in;
   background: white;
+  size: A4;
 }
 
 @media screen {
